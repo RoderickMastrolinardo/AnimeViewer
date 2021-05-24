@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 
-const AnimeDetail = props => (
-  <View>
-    <Text>Anime Details</Text>
-  </View>
-);
+const AnimeDetail = props => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: 'ANIMES_SUCCES', payload: ['dragon ball', 'naruto']});
+  }, []);
+  return (
+    <View>
+      <Text>Anime Details</Text>
+    </View>
+  );
+};
 
 export default AnimeDetail;
