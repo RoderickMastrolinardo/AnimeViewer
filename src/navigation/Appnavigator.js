@@ -10,7 +10,11 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Tabs">
-        <Stack.Screen name="Tabs" component={TabStack} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Tabs"
+          component={TabStack}
+        />
         <Stack.Screen name="Anime Details" component={AnimeDetail} />
       </Stack.Navigator>
     </NavigationContainer>
