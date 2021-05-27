@@ -34,9 +34,9 @@ export default TabStack = () => {
         activeTintColor: 'black',
         inactiveTintColor: 'gray',
       }}>
-      <Tab.Screen name="Mi Perfil" component={ProfileScreen} />
       <Tab.Screen name="Animes" component={AnimeScreen} />
       <Tab.Screen name="Mis favoritos" component={FavoritesScreen} />
+      <Tab.Screen name="Mi Perfil" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {useDispatch} from 'react-redux';
+import LottieView from 'lottie-react-native';
 import AnimeTextInput from '../components/AnimeTextInput';
 import {getAnimes} from '../store/actions/AnimesActions';
 import AnimeItem from '../components/AnimeItem';
@@ -45,6 +45,18 @@ const AnimeScreen = props => {
       />
     );
   };
+  const ListFooter = () => {
+    if (!end) {
+      return (
+        <LottieView
+          source={require('../assets/lotties/loading.json')}
+          autoPlay
+          loop
+          style={{width: 40, height: 40, alignSelf: 'center'}}
+        />
+      );
+    }
+  };
   const searchAnime = text => {
     if (text) {
       setsearchText(text);
@@ -79,12 +91,15 @@ const AnimeScreen = props => {
             keyExtractor={item => item.id}
             onEndReachedThreshold={0.9}
             onEndReached={fetchMoreAnime}
-            //loading more spinner
-            // ListFooterComponent={ListFooter}
+            ListFooterComponent={ListFooter}
           />
         ) : (
           //COLOCAR LOTTIE
-          <></>
+          <LottieView
+            source={require('../assets/lotties/loading.json')}
+            autoPlay
+            loop
+          />
         )}
       </View>
     </View>
