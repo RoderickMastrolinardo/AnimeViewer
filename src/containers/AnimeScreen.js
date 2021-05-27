@@ -3,7 +3,8 @@ import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {useDispatch} from 'react-redux';
 import AnimeTextInput from '../components/AnimeTextInput';
-import {getAnimes, getAnimeByText} from '../store/actions/AnimesActions';
+import {getAnimes} from '../store/actions/AnimesActions';
+import AnimeItem from '../components/AnimeItem';
 
 const AnimeScreen = props => {
   const [animes, setAnimes] = useState([]);
@@ -35,13 +36,13 @@ const AnimeScreen = props => {
   const goToAnimeDetail = attributes => {
     props.navigation.navigate('Anime Details', {...attributes});
   };
-  const renderAnimeItem = (item, index) => {
-    console.log(item);
+  const renderAnimeItem = item => {
     return (
-      <TouchableOpacity onPress={() => goToAnimeDetail(item.attributes)}>
-        <AnimeItem attributes={item.attributes}></AnimeItem>
-        {/* <Text>{item.attributes.canonicalTitle}</Text> */}
-      </TouchableOpacity>
+      <AnimeItem
+        animeScreen
+        attributes={item.attributes}
+        onAnimePress={() => goToAnimeDetail(item.attributes)}
+      />
     );
   };
   const searchAnime = text => {
@@ -69,6 +70,11 @@ const AnimeScreen = props => {
         {animes.length > 0 ? (
           <FlatList
             data={animes}
+            numColumns={2}
+            columnWrapperStyle={{
+              alignSelf: 'center',
+              alignContent: 'space-between',
+            }}
             renderItem={({item}, index) => renderAnimeItem(item, index)}
             keyExtractor={item => item.id}
             onEndReachedThreshold={0.9}
@@ -99,6 +105,7 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     borderWidth: 1,
+    marginBottom: 10,
   },
 });
 

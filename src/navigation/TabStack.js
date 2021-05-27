@@ -15,13 +15,13 @@ export default TabStack = () => {
           let iconName;
 
           switch (route.name) {
-            case 'Profile':
+            case 'Mi Perfil':
               iconName = 'user';
               break;
-            case 'All Animes':
+            case 'Animes':
               iconName = 'book';
               break;
-            case 'My favorites':
+            case 'Mis favoritos':
               iconName = 'star';
               break;
             default:
@@ -34,9 +34,9 @@ export default TabStack = () => {
         activeTintColor: 'black',
         inactiveTintColor: 'gray',
       }}>
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="All Animes" component={AnimeScreen} />
-      <Tab.Screen name="My favorites" component={FavoritesScreen} />
+      <Tab.Screen name="Mi Perfil" component={ProfileScreen} />
+      <Tab.Screen name="Animes" component={AnimeScreen} />
+      <Tab.Screen name="Mis favoritos" component={FavoritesScreen} />
     </Tab.Navigator>
   );
 };

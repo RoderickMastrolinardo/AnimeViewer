@@ -2,7 +2,6 @@ import axios from 'axios';
 import {showMessage} from 'react-native-flash-message';
 
 export const getAnimes = (offset, text) => {
-  // return (dispatch, getState) => {
   let endpoint = '';
   if (text) {
     const encodedText = encodeURIComponent(text);
@@ -28,5 +27,25 @@ export const getAnimes = (offset, text) => {
       return [];
     });
   return animes;
-  // };
+};
+export const deleteAnime = (title, callBack) => {
+  return (dispatch, getState) => {
+    const {
+      Anime: {favoritesAnimes},
+    } = getState();
+    const index = favoritesAnimes.findIndex(
+      anime => title === anime.canonicalTitle,
+    );
+    if (index !== -1) {
+      dispatch({type: 'DELETE_ANIME', index: index});
+      callBack();
+    } else {
+      showMessage({
+        message: 'Anime no encontrado en favoritos',
+        type: 'danger',
+        icon: {icon: 'danger', position: 'left'},
+        backgroundColor: '#ed1c24',
+      });
+    }
+  };
 };
