@@ -4,15 +4,15 @@
 
 ### Android
 
-npm install
-yarn
-react-native run-android
+npm install<br />
+yarn<br />
+react-native run-android<br />
 
 ### IOS
 
-npm install
-yarn
-cd ios
-pod install
-cd ..
+npm install<br />
+yarn<br />
+cd ios<br />
+pod install<br />
+cd ..<br />
 abrir Xcode y presionar "Build and run"
