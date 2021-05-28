@@ -34,7 +34,7 @@ const AnimeScreen = props => {
     }
   };
   const goToAnimeDetail = attributes => {
-    props.navigation.navigate('Anime Details', {...attributes});
+    props.navigation.navigate('Detalles del anime', {...attributes});
   };
   const renderAnimeItem = item => {
     return (

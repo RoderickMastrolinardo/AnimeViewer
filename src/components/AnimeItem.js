@@ -30,6 +30,11 @@ class AnimeItem extends Component {
       this.setState({isFav: false});
     }
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.favorites.length !== this.props.favorites.length) {
+      this.checkIfIsFavorite(this.props.attributes.canonicalTitle);
+    }
+  }
   starPressed = () => {
     const {saveAnime, attributes, deleteAnime} = this.props;
     if (this.state.isFav) {

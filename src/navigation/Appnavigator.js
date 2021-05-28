@@ -15,7 +15,7 @@ const AppNavigator = () => {
           name="Tabs"
           component={TabStack}
         />
-        <Stack.Screen name="Anime Details" component={AnimeDetail} />
+        <Stack.Screen name="Detalles del anime" component={AnimeDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
